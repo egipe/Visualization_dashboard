@@ -31,22 +31,28 @@ create_dropdown()
 // Horizontal Bar Chart- sample_values as values for bar chart, otu_ids as labels, otu_labels as hovertext; top 10 OTU's
 function getData() {
     d3.json("samples.json").then(function(data){
-        var otu_ids = data.samples.otu_ids
-        var sample_values = data.samples.sample_values
-        var otu_labels = data.samples.otu_labels
-        buildTable(otu_ids, sample_values, otu_labels);
+        var id
+        var ethnicity
+        var gender
+        var location
+        var bbtype
+        var wfreq
+        var otu_ids = data.samples.otu_ids;
+        var sample_values = data.samples.sample_values;
+        var otu_labels = data.samples.otu_labels;
+        buildTable(id, ethnicity, gender, location, bbtype, wfreq);
     });
 }
 
 // Display each key-value pair from metadata JSON object
-function buildTable(otu_ids, sample_values, otu_labels) {
+function buildTable(id, ethnicity, gender, location, bbtype, wfreq) {
     var table = d3.select(".sample-metadata")
 }
 
 function buildPlot() {
     d3.json("samples.json").then(function(data){
-        var
         getData()
+
         var trace1 = {
             type: "bar",
             x: otu_ids.slice(0,9)
@@ -70,3 +76,7 @@ buildPlot();
 // Bubble chart- otu's x values, sample_values for y & marker size, otu_id for marker color, otu_labels for text values
 //Display sample metadata (individuals demographic info)
 
+
+// Update charts when new subject is selected 
+
+plotly.restyle('bar')
