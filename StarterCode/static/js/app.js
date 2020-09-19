@@ -95,19 +95,33 @@ function buildBubble(selection) {
     });
 }
 
-// // Gauge Example
-// function buildGauge(selection) {
-//     d3.json("samples.json").then(function(data){
-//         var samples = data.metadata;
-//         var new_array = samples.filter(sample => sample.id == selection);
-//         var trace1 = {
-//             type: "gauge",
-//             value: new_array[0].wfreq,
-//         }
-//         var data = [trace1];
-//         var layout = {
-//             title: `Gauge Chart`
-//             };
-//         Plotly.newPlot('gauge', data, layout)
-//     });
-// }
+// Gauge Example
+function buildGauge(selection) {
+    d3.json("samples.json").then(function(data){
+        var samples = data.metadata;
+        var new_array = samples.filter(sample => sample.id == selection);
+        var trace1 = {
+            domain: { x: [0, 1], y: [0, 1] },
+            type: "gauge",
+            value: new_array[0].wfreq,
+            type: "indicator",
+            mode: "gauge+number+delta",
+            gauge: {
+                axis: { range: [null, 500] },
+                steps: [
+                  { range: [0, 250], color: "lightgray" },
+                  { range: [250, 400], color: "gray" }
+                ],
+                threshold: {
+                  line: { color: "red", width: 4 },
+                  thickness: 0.75,
+                }
+            }
+        }
+        var data = [trace1];
+        var layout = {
+            title: `Gauge Chart`
+            };
+        Plotly.newPlot('gauge', data, layout)
+    });
+}
