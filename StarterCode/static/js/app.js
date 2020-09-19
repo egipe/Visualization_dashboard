@@ -77,7 +77,9 @@ function buildBubble(selection) {
             x: new_array[0].otu_ids,
             y: new_array[0].sample_values,
             mode: "markers",
-            marker: new_array[0].sample_values
+            marker: {
+                size: new_array[0].sample_values
+            }
         }
         var data = [trace1];
         var layout = {
