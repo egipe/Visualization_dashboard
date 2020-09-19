@@ -23,6 +23,7 @@ function optionChanged(new_selection){
      buildMetaData(new_selection)
      buildPlot(new_selection)
      buildBubble(new_selection)
+     buildGauge(new_selection)
 }
 
 // // Display each key-value pair from metadata JSON object
@@ -73,7 +74,6 @@ function buildBubble(selection) {
         var new_array = samples.filter(sample => sample.id == selection);
         var trace1 = {
             type: "bubble",
-            //slice for top 10 and order
             x: new_array[0].otu_ids,
             y: new_array[0].sample_values,
             mode: "markers",
@@ -94,3 +94,20 @@ function buildBubble(selection) {
         Plotly.newPlot('bubble', data, layout)
     });
 }
+
+// // Gauge Example
+// function buildGauge(selection) {
+//     d3.json("samples.json").then(function(data){
+//         var samples = data.metadata;
+//         var new_array = samples.filter(sample => sample.id == selection);
+//         var trace1 = {
+//             type: "gauge",
+//             value: new_array[0].wfreq,
+//         }
+//         var data = [trace1];
+//         var layout = {
+//             title: `Gauge Chart`
+//             };
+//         Plotly.newPlot('gauge', data, layout)
+//     });
+// }
