@@ -83,7 +83,7 @@ function buildBubble(selection) {
         }
         var data = [trace1];
         var layout = {
-            title: `top 10 OTUs`,
+            title: `Bubble Chart`,
             xaxis: {
                 title: "OTU IDs"
             },
@@ -120,7 +120,7 @@ function buildGauge(selection) {
         }
         var data = [trace1];
         var layout = {
-            title: `Gauge Chart`
+            title: `Belly Button Washing Frequency`
             };
         Plotly.newPlot('gauge', data, layout)
     });
